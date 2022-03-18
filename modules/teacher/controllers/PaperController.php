@@ -1,6 +1,7 @@
 <?php
 namespace app\modules\teacher\controllers;
 use app\models\Distribute;
+use app\models\Mark;
 use app\models\Paper;
 use yii\web\Controller;
 use Yii;
@@ -26,7 +27,16 @@ class PaperController extends Controller{
     }
     public function actionMark(){
         $paperid = (int)Yii::$app->request->get('paperid');
-        $model = Paper::find()->where('paperid = :id', [':id' => $paperid])->one();
-        return $this->render('mark',['model'=>$model]);
+        $model1 = Paper::find()->where('paperid = :id', [':id' => $paperid])->one();
+        $model = new Mark;
+        if (Yii::$app->request->isPost){
+            $post = Yii::$app->request->post();
+            if ($model->mark($post)){
+                Yii::$app->session->setFlash('info','评分成功');
+            }else{
+                Yii::$app->session->setFlash('info','评分失败');
+            }
+        }
+        return $this->render('mark',['model'=>$model,'model1'=>$model1]);
     }
 }

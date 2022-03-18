@@ -24,19 +24,15 @@ use yii\helpers\Html;
                             ],
                         ]);
                         ?>
-                        <?php echo $form->field($model, 'title')->textInput(['class' => 'span9', 'disabled' => true]); ?>
-<!--                        --><?php //echo $form->field($model, 'select')->textInput(['class' => 'span9']); ?>
-<!--                        --><?php //echo $form->field($model, 'summarize')->textInput(['class' => 'span9']); ?>
-<!--                        --><?php //echo $form->field($model, 'innovation')->textInput(['class' => 'span9']); ?>
-<!--                        --><?php //echo $form->field($model, 'theory')->textInput(['class' => 'span9']); ?>
-<!--                        --><?php //echo $form->field($model, 'research')->textInput(['class' => 'span9']); ?>
-<!--                        --><?php //echo $form->field($model, 'write')->textInput(['class' => 'span9']); ?>
-                        选题（10%）：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="span9" type="text"><br><br>
-                        综述（5%）：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="span9" type="text"><br><br>
-                        成果与新见解（35%）：<input class="span9" type="text"><br><br>
-                        理论和专业知识（15%）：<input class="span9" type="text"><br><br>
-                        科研能力（25%）：<input class="span9" type="text"><br><br>
-                        写作能力（10%）：<input class="span9" type="text"><br><br>
+<!--                        --><?php //echo $form->field($model1, 'paperid')->hiddenInput(['class' => 'span9', 'disabled' => true]); ?>
+                        <?php echo $form->field($model1, 'title')->textInput(['class' => 'span9', 'disabled' => true]); ?>
+                        <?php echo $form->field($model, 'select')->textInput(['class' => 'span9','id'=>'a','onchange'=>'total()']); ?>
+                        <?php echo $form->field($model, 'summarize')->textInput(['class' => 'span9','id'=>'b','onchange'=>'total()']); ?>
+                        <?php echo $form->field($model, 'innovation')->textInput(['class' => 'span9','id'=>'c','onchange'=>'total()']); ?>
+                        <?php echo $form->field($model, 'theory')->textInput(['class' => 'span9','id'=>'d','onchange'=>'total()']); ?>
+                        <?php echo $form->field($model, 'research')->textInput(['class' => 'span9','id'=>'e','onchange'=>'total()']); ?>
+                        <?php echo $form->field($model, 'write')->textInput(['class' => 'span9','id'=>'f','onchange'=>'total()']); ?>
+                        <?php echo $form->field($model, 'total')->textInput(['class' => 'span9','id'=>'g']); ?>
 
                         <?php
                         if (Yii::$app->session->hasFlash('info')) {
@@ -59,9 +55,6 @@ use yii\helpers\Html;
                         <i class="icon-lightbulb pull-left"></i>
                         每项得分100分
                     </div>
-                    <!--                        <h6>重要提示：</h6>-->
-                    <!--                        <p>管理员可以管理后台功能模块</p>-->
-                    <!--                        <p>请谨慎修改</p>-->
                 </div>
             </div>
         </div>
@@ -69,4 +62,15 @@ use yii\helpers\Html;
 </div>
 </div>
 <!-- end main container -->
-
+<script>
+    function total() {
+        const a = document.getElementById('a').value;
+        const b = document.getElementById('b').value;
+        const c = document.getElementById('c').value;
+        const d = document.getElementById('d').value;
+        const e = document.getElementById('e').value;
+        const f = document.getElementById('f').value;
+        const g = document.getElementById('g');
+        g.value = a*0.1+b*0.05+c*0.35+d*0.15+e*0.25+f*0.1;
+    }
+</script>

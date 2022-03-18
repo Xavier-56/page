@@ -53,6 +53,7 @@
                                 <?php echo date("Y-m-d H:i:s", $paper->createtime); ?>
                             </td>
                             <td class="align-right">
+                                <a href="<?php echo yii\helpers\Url::to(['paper/score', 'paperid' => $paper->paperid]); ?>">查看得分</a>
                                 <a href="<?php echo yii\helpers\Url::to(['paper/modify', 'paperid' => $paper->paperid]); ?>">修改</a>
                                 <a href="<?php echo yii\helpers\Url::to(['paper/delete', 'paperid' => $paper->paperid]); ?>">删除</a>
                             </td>
