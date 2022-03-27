@@ -29,7 +29,8 @@ class Paper extends ActiveRecord{
         if ($this->validate()) {
             $this->file->saveAs('uploads/' . $this->file->baseName . '.' . $this->file->extension);
             $this->createtime = time();
-            $this->studentid = Yii::$app->session['student']['studentid'];
+//            $this->studentid = Yii::$app->session['student']['studentid'];
+            $this->studentid  = Student::find()->where('username = :user', [':user' => Yii::$app->session['student']['username']])->one()->studentid;
             $this->title = $this->file->baseName;
             $this->url ='uploads/' . $this->file->baseName . '.' . $this->file->extension;
             if ($this->save(false)){
@@ -46,7 +47,7 @@ class Paper extends ActiveRecord{
         if ($this->validate()) {
             $this->file->saveAs('uploads/' . $this->file->baseName . '.' . $this->file->extension);
             $this->createtime = time();
-            $this->studentid = Yii::$app->session['student']['studentid'];
+            $this->studentid  = Student::find()->where('username = :user', [':user' => Yii::$app->session['student']['username']])->one()->studentid;
             $this->title = $this->file->baseName;
             $this->url ='uploads/' . $this->file->baseName . '.' . $this->file->extension;
             return (bool)$this->updateAll(['title'=>$this->title,'createtime'=>$this->createtime,'url'=>$this->url], 'studentid = :id', [':id' => $this->studentid]);

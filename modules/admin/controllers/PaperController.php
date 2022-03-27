@@ -29,8 +29,14 @@ class PaperController extends Controller{
         $model = new Distribute;
         $paperid = (int)Yii::$app->request->get('paperid');
         $model->paperid = $paperid;
-        $count = (int)Teacher::find()->count();
-        $model->teacherid = rand(1,$count);
+//        $count = (int)Teacher::find()->count();
+//        $model->teacherid = rand(1,$count);
+        $teacher = Teacher::find()->select(['teacherid'])->asArray()->all();
+        foreach ($teacher as $key=>$v){
+            $ids[]=$v['teacherid'];
+        }
+        $rand_keys = array_rand($ids,1);
+        $model->teacherid = $ids[$rand_keys];
         $model->save();
         $this->redirect(['paper/papers']);
         Yii::$app->session->setFlash('info', '分配成功');

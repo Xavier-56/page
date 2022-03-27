@@ -37,9 +37,9 @@ use yii\bootstrap\ActiveForm;
                             echo Yii::$app->session->getFlash('info');
                         }
                         ?>
-                        <button class="btn-glow primary" style="margin-left: 300px">
+                        <div class="btn-glow primary" style="margin-left: 300px">
                             <a style="color: white" href="<?php echo yii\helpers\Url::to(['paper/download','paperid' => $model->paperid]); ?>">下载得分表</a>
-                        </button>
+                        </div>
                         <?php ActiveForm::end(); ?>
                     </div>
                 </div>

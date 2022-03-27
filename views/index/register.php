@@ -6,31 +6,17 @@ use yii\helpers\Html;
 <html class="login-bg">
 <head>
     <title>研究生论文送审系统（学生）</title>
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- bootstrap -->
     <link href="assets/css/bootstrap/bootstrap.css" rel="stylesheet" />
     <link href="assets/css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
     <link href="assets/css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet" />
-
-    <!-- global styles -->
     <link rel="stylesheet" type="text/css" href="assets/css/layout.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/elements.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/icons.css" />
-
-    <!-- libraries -->
     <link rel="stylesheet" type="text/css" href="assets/css/lib/font-awesome.css" />
-
-    <!-- this page specific styles -->
     <link rel="stylesheet" href="assets/css/compiled/signup.css" type="text/css" media="screen" />
-
-    <!-- open sans font -->
-    <link href='http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css' />
-
-    <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+<!--    <link href='http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css' />-->
+<!--    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>-->
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
 <body>
 <div class="header">

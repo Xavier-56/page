@@ -15,8 +15,8 @@ use yii\helpers\Html;
     <link rel="stylesheet" type="text/css" href="assets/css/icons.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/lib/font-awesome.css" />
     <link rel="stylesheet" href="assets/css/compiled/signup.css" type="text/css" media="screen" />
-    <link href='http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css' />
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<!--    <link href='http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css' />-->
+<!--    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>-->
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
 <body>
 <div class="header">

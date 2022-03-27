@@ -3,6 +3,7 @@ namespace app\modules\teacher\controllers;
 use app\models\Distribute;
 use app\models\Mark;
 use app\models\Paper;
+use app\models\Teacher;
 use yii\web\Controller;
 use Yii;
 use yii\data\Pagination;
@@ -10,7 +11,8 @@ use yii\data\Pagination;
 class PaperController extends Controller{
     public $layout = 'layout1';
     public function actionPapers(){
-        $model = Distribute::find()->joinWith('paper');
+        $teacherid =Teacher::find()->where('username = :user', [':user' => Yii::$app->session['teacher']['username']])->one()->teacherid;
+        $model = Distribute::find()->where('teacherid = :id', [':id' => $teacherid])->joinWith('paper');
         $count = $model->count();
         $pageSize = Yii::$app->params['pageSize']['paper'];
         $pager = new Pagination(['totalCount' => $count, 'pageSize' => $pageSize]);

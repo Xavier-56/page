@@ -5,13 +5,11 @@ use yii\helpers\Html;
 <link rel="stylesheet" href="assets/css/compiled/new-user.css" type="text/css" media="screen" />
 <!-- main container -->
 <div class="content">
-
     <div class="container-fluid">
         <div id="pad-wrapper" class="new-user">
             <div class="row-fluid header">
                 <h3>上传论文</h3>
             </div>
-
             <div class="row-fluid form-wrapper">
                 <!-- left column -->
                 <div class="span9 with-sidebar">
@@ -50,14 +48,10 @@ use yii\helpers\Html;
                         请在左侧表单当中填入论文题目以并上传文件<br/>
                         注意上传的文件为PDF格式
                     </div>
-                    <!--                        <h6>重要提示：</h6>-->
-                    <!--                        <p>管理员可以管理后台功能模块</p>-->
-                    <!--                        <p>请谨慎修改</p>-->
                 </div>
             </div>
         </div>
     </div>
 </div>
 </div>
-<!-- end main container -->
 

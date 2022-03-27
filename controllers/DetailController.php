@@ -23,8 +23,7 @@ class DetailController extends Controller{
         $model->password= '';
         return $this->render('changedetails',['model'=>$model]);
     }
-    public function actionChangepass()
-    {
+    public function actionChangepass(){
         $model = Student::find()->where('username = :user', [':user' => Yii::$app->session['student']['username']])->one();
         if (Yii::$app->request->isPost) {
             $post = Yii::$app->request->post();

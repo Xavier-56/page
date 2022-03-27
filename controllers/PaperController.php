@@ -41,6 +41,27 @@ class PaperController extends Controller{
         }
         return $this->render('modify',['model'=>$model]);
     }
+    public function actionDelete(){
+        try{
+            $paperid = (int)Yii::$app->request->get('paperid');
+            if (empty($paperid)) {
+                throw new \Exception();
+            }
+            $trans = Yii::$app->db->beginTransaction();
+            if ($obj = Paper::find()->where('paperid = :id', [':id' => $paperid])->one()) {
+                $res = Paper::deleteAll('paperid = :id', [':id' => $paperid]);
+                if (empty($res)) {
+                    throw new \Exception();
+                }
+            }
+            $trans->commit();
+        } catch(\Exception $e) {
+            if (Yii::$app->db->getTransaction()) {
+                $trans->rollback();
+            }
+        }
+        $this->redirect(['paper/alreadysubmit']);
+    }
     public function actionScore(){
         $paperid = (int)Yii::$app->request->get('paperid');
         $model1 = Paper::find()->where('paperid = :id', [':id' => $paperid])->one();
@@ -69,9 +90,33 @@ class PaperController extends Controller{
         $filename = 'download/'.$time1.'.docx';
 //        $filename=iconv("utf-8","gb2312",$filename);
         $template->saveAs($filename);
-        $file = Yii::getAlias('@webroot') . '/'.$filename;
+        $srcfilename =Yii::getAlias('@webroot') . '/download/'.$time1.'.docx';
+        $destfilename =Yii::getAlias('@webroot') . '/download/'.$time1.'.pdf';
+        $this->doc_to_pdf($srcfilename,$destfilename);
+//        $file = Yii::getAlias('@webroot') . '/download/'.$destfilename;
+        $file = $destfilename;
         if (file_exists($file)) {
             Yii::$app->response->sendFile($file);
+        }
+    }
+    public function doc_to_pdf($srcfilename,$destfilename) {
+        try {
+            if(!file_exists($srcfilename)){
+                return;
+            }
+            $word = new \COM("word.application") or die("Can't start Word!");
+            $word->Visible=0;
+            $word->Documents->Open($srcfilename, false, false, false, "1", "1", true);
+            $word->ActiveDocument->final = false;
+            $word->ActiveDocument->Saved = true;
+            $word->ActiveDocument->ExportAsFixedFormat($destfilename, 17, false, 0, 3, 1, 5000, 7, true, true, 1);
+            $word->ActiveDocument->Close();
+            $word->Quit();
+        } catch (\Exception $e) {
+            if (method_exists($word, "Quit")){
+                $word->Quit();
+            }
+            return;
         }
     }
 }

@@ -46,7 +46,6 @@ class Student extends ActiveRecord{
     public function register($data){
         $this->scenario = 'register';
         if ($this->load($data)&&$this->validate()){
-//            $this->grade = $this->
             $this->createtime = time();
             $this->password = md5($this->password);
             if ($this->save(false)){
@@ -70,7 +69,7 @@ class Student extends ActiveRecord{
             $session = Yii::$app->session;
             $session['student'] = [
                 'username' => $this->username,
-                'studentid'=>22,
+//                'studentid'=>22,
                 'isLogin' => 1,
             ];
             return (bool)$session['student']['isLogin'];
