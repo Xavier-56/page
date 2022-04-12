@@ -34,6 +34,9 @@
                         <th class="span3 sortable">
                             <span class="line"></span>提交时间
                         </th>
+                        <th class="span3 sortable">
+                            <span class="line"></span>状态
+                        </th>
                         <th class="span3 sortable align-right">
                             <span class="line"></span>操作
                         </th>
@@ -43,15 +46,6 @@
                     <!-- row -->
                     <?php foreach($papers as $paper): ?>
                         <tr class="first">
-<!--                            <td>-->
-<!--                                --><?php //if (empty($teacher->avatar)): ?>
-<!--                                    <img src="--><?php //echo Yii::$app->params['defaultValue']['avatar']; ?><!--" class="img-circle avatar hidden-phone" />-->
-<!--                                --><?php //else: ?>
-<!--                                    <img src="assets/uploads/avatar/--><?php //echo $teacher->avatar; ?><!--" class="img-circle avatar hidden-phone" />-->
-<!--                                --><?php //endif; ?>
-<!--                                <a href="#" class="name">--><?php //echo $teacher->username; ?><!--</a>-->
-<!--                                <span class="subtext">--><?php //echo $teacher->email; ?><!--</span>-->
-<!--                            </td>-->
                             <td>
                                 <?php echo isset($paper->title) ? $paper->title : '未填写'; ?>
                             </td>
@@ -64,10 +58,21 @@
                             <td>
                                 <?php echo date("Y-m-d H:i:s", $paper->createtime); ?>
                             </td>
+                            <td>
+                                <?php if ($paper->status == 1 or $paper->status == 2):?>
+                                    <span class="label label-success">已分配</span>
+                                <?php else:?>
+                                    <span class="label label-important">未分配</span>
+                                <?php endif; ?>
+                            </td>
                             <td class="align-right">
-                                <a href="<?php echo yii\helpers\Url::to(['paper/download', 'paperid' => $paper->paperid]); ?>">下载</a>
-                                <a href="<?php echo yii\helpers\Url::to(['paper/distribute', 'paperid' => $paper->paperid]); ?>">分配</a>
-                                <a href="<?php echo yii\helpers\Url::to(['paper/delete', 'paperid' => $paper->paperid]); ?>">删除</a>
+                                <?php if ($paper->status == 1 or $paper->status == 2):?>
+                                    <a href="<?php echo yii\helpers\Url::to(['paper/download', 'paperid' => $paper->paperid]); ?>">下载</a>
+                                <?php else:?>
+                                    <a href="<?php echo yii\helpers\Url::to(['paper/download', 'paperid' => $paper->paperid]); ?>">下载</a>
+                                    <a href="<?php echo yii\helpers\Url::to(['paper/distribute', 'paperid' => $paper->paperid]); ?>">分配</a>
+                                    <a href="<?php echo yii\helpers\Url::to(['paper/delete', 'paperid' => $paper->paperid]); ?>">删除</a>
+                                <?php endif; ?>
                             </td>
                         </tr>
                     <?php endforeach; ?>

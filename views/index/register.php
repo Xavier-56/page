@@ -15,8 +15,6 @@ use yii\helpers\Html;
     <link rel="stylesheet" type="text/css" href="assets/css/icons.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/lib/font-awesome.css" />
     <link rel="stylesheet" href="assets/css/compiled/signup.css" type="text/css" media="screen" />
-<!--    <link href='http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css' />-->
-<!--    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>-->
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
 <body>
 <div class="header">
@@ -35,7 +33,7 @@ use yii\helpers\Html;
             <?php echo $form->field($model,'username')->textInput(['class'=>'span12','placeholder'=>'用户名']);?>
             <?php echo $form->field($model,'studentno')->textInput(['class'=>'span12','placeholder'=>'学号']);?>
             <?php echo $form->field($model,'truename')->textInput(['class'=>'span12','placeholder'=>'真实姓名']);?>
-            <?php echo $form->field($model, 'grade')->dropDownList([0=>'2018',1=>'2019'],['prompt'=>'请选择年级','class'=>'span12','style'=>'margin-bottom:10px;border:1px solid #B2BFC7;height:10px;height:20px;']) ?>
+            <?php echo $form->field($model,'grade')->textInput(['class'=>'span12','placeholder'=>'年级']);?>
             <?php echo $form->field($model,'major')->textInput(['class'=>'span12','placeholder'=>'专业']);?>
             <?php echo $form->field($model,'email')->textInput(['class'=>'span12','placeholder'=>'邮箱']);?>
             <?php echo $form->field($model,'password')->passwordInput(['class'=>'span12','placeholder'=>'密码']);?>

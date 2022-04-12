@@ -48,87 +48,28 @@
 <!--                <li class="hidden-phone">-->
 <!--                    <input class="search" type="text" />-->
 <!--                </li>-->
-<!--                <li class="notification-dropdown hidden-phone">-->
-<!--                    <a href="#" class="trigger">-->
-<!--                        <i class="icon-warning-sign"></i>-->
-<!--                        <span class="count">6</span>-->
-<!--                    </a>-->
-<!--                    <div class="pop-dialog">-->
-<!--                        <div class="pointer right">-->
-<!--                            <div class="arrow"></div>-->
-<!--                            <div class="arrow_border"></div>-->
-<!--                        </div>-->
-<!--                        <div class="body">-->
-<!--                            <a href="#" class="close-icon"><i class="icon-remove-sign"></i></a>-->
-<!--                            <div class="notifications">-->
-<!--                                <h3>你有 6 个新通知</h3>-->
-<!--                                <a href="#" class="item">-->
-<!--                                    <i class="icon-signin"></i> 新用户注册-->
-<!--                                    <span class="time"><i class="icon-time"></i> 13 分钟前.</span>-->
-<!--                                </a>-->
-<!--                                <a href="#" class="item">-->
-<!--                                    <i class="icon-signin"></i> 新用户注册-->
-<!--                                    <span class="time"><i class="icon-time"></i> 18 分钟前.</span>-->
-<!--                                </a>-->
-<!--                                <a href="#" class="item">-->
-<!--                                    <i class="icon-signin"></i> 新用户注册-->
-<!--                                    <span class="time"><i class="icon-time"></i> 49 分钟前.</span>-->
-<!--                                </a>-->
-<!--                                <a href="#" class="item">-->
-<!--                                    <i class="icon-download-alt"></i> 新订单-->
-<!--                                    <span class="time"><i class="icon-time"></i> 1 天前.</span>-->
-<!--                                </a>-->
-<!--                                <div class="footer">-->
-<!--                                    <a href="#" class="logout">查看所有通知</a>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </li>-->
-<!--                -->
-<!--                <li class="notification-dropdown hidden-phone">-->
-<!--                    <a href="#" class="trigger">-->
-<!--                        <i class="icon-envelope-alt"></i>-->
-<!--                    </a>-->
-<!--                    <div class="pop-dialog">-->
-<!--                        <div class="pointer right">-->
-<!--                            <div class="arrow"></div>-->
-<!--                            <div class="arrow_border"></div>-->
-<!--                        </div>-->
-<!--                        <div class="body">-->
-<!--                            <a href="#" class="close-icon"><i class="icon-remove-sign"></i></a>-->
-<!--                            <div class="messages">-->
-<!--                                <a href="#" class="item">-->
-<!--                                    <img src="/assets/admin/img/contact-img.png" class="display" />-->
-<!--                                    <div class="name">Alejandra Galván</div>-->
-<!--                                    <div class="msg">-->
-<!--                                        There are many variations of available, but the majority have suffered alterations.-->
-<!--                                    </div>-->
-<!--                                    <span class="time"><i class="icon-time"></i> 13 min.</span>-->
-<!--                                </a>-->
-<!--                                <a href="#" class="item">-->
-<!--                                    <img src="/assets/admin/img/contact-img2.png" class="display" />-->
-<!--                                    <div class="name">Alejandra Galván</div>-->
-<!--                                    <div class="msg">-->
-<!--                                        There are many variations of available, have suffered alterations.-->
-<!--                                    </div>-->
-<!--                                    <span class="time"><i class="icon-time"></i> 26 min.</span>-->
-<!--                                </a>-->
-<!--                                <a href="#" class="item last">-->
-<!--                                    <img src="/assets/admin/img/contact-img.png" class="display" />-->
-<!--                                    <div class="name">Alejandra Galván</div>-->
-<!--                                    <div class="msg">-->
-<!--                                        There are many variations of available, but the majority have suffered alterations.-->
-<!--                                    </div>-->
-<!--                                    <span class="time"><i class="icon-time"></i> 48 min.</span>-->
-<!--                                </a>-->
-<!--                                <div class="footer">-->
-<!--                                    <a href="#" class="logout">View all messages</a>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </li>-->
+                <li class="notification-dropdown hidden-phone">
+                    <a href="#" class="trigger">
+                        <i class="icon-envelope-alt"></i>
+                        <span class="count">6</span>
+                    </a>
+                    <div class="pop-dialog">
+                        <div class="pointer right">
+                            <div class="arrow"></div>
+                            <div class="arrow_border"></div>
+                        </div>
+                        <div class="body">
+                            <a href="#" class="close-icon"><i class="icon-remove-sign"></i></a>
+                            <div class="notifications">
+                                <h3>你有 6 个新通知</h3>
+                                <a href="#" class="item">
+                                    <i class="icon-signin"></i> 新用户注册
+                                    <span class="time"><i class="icon-time"></i> 13 分钟前.</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle hidden-phone" data-toggle="dropdown">
                         账户管理

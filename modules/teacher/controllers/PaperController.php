@@ -1,5 +1,6 @@
 <?php
 namespace app\modules\teacher\controllers;
+use app\models\Comment;
 use app\models\Distribute;
 use app\models\Mark;
 use app\models\Paper;
@@ -39,6 +40,15 @@ class PaperController extends Controller{
                 Yii::$app->session->setFlash('info','评分失败');
             }
         }
+        Paper::updateAll(['status' => 1], 'paperid = :id', [':id' => $paperid]);
         return $this->render('mark',['model'=>$model,'model1'=>$model1]);
+    }
+    public function actionComment(){
+        $model = new Comment;
+        $post = Yii::$app->request->post();
+        $model->comment($post);
+        $paperid = (int)Yii::$app->request->get('paperid');
+        $comments = Comment::find()->where('paperid = :id', [':id' => $paperid])->all();
+        return $this->render('comment', ['model' => $model,'comments'=>$comments]);
     }
 }

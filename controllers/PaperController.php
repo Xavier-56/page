@@ -1,5 +1,6 @@
 <?php
 namespace app\controllers;
+use app\models\Comment;
 use app\models\Mark;
 use app\models\Paper;
 use app\models\Student;
@@ -118,5 +119,13 @@ class PaperController extends Controller{
             }
             return;
         }
+    }
+    public function actionComment(){
+        $model = new Comment;
+        $post = Yii::$app->request->post();
+        $model->comment($post);
+        $paperid = (int)Yii::$app->request->get('paperid');
+        $comments = Comment::find()->where('paperid = :id', [':id' => $paperid])->all();
+        return $this->render('comment', ['model' => $model,'comments'=>$comments]);
     }
 }

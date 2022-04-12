@@ -8,6 +8,9 @@ class Mark extends ActiveRecord{
     public static function tableName(){
         return 'mark';
     }
+    public function getPaper(){
+        return $this->hasOne(Paper::className(), ['paperid' => 'paperid']);
+    }
     public function attributeLabels(){
         return[
             'select'=>'选题（10%）：',

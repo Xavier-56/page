@@ -239,6 +239,22 @@
                 <li><a href="<?php echo yii\helpers\Url::to(['paper/papers']); ?>">论文列表</a></li>
                 </ul>
             </li>
+            <li>
+                <a class="dropdown-toggle" href="#">
+                    <i class="icon-star"></i>
+                    <span>留言管理</span>
+                    <i class="icon-chevron-down"></i>
+                </a>
+                <ul class="submenu">
+                    <li><a href="<?php echo yii\helpers\Url::to(['comment/comments']); ?>">留言列表</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="<?php echo yii\helpers\Url::to(['stat/stats']); ?>">
+                    <i class="icon-th-large"></i>
+                    <span>统计</span>
+                </a>
+            </li>
 <!---->
 <!--            <li>-->
 <!--                <a class="dropdown-toggle" href="#">-->
@@ -261,12 +277,6 @@
 <!--                <a href="calendar.html">-->
 <!--                    <i class="icon-calendar-empty"></i>-->
 <!--                    <span>日历事件管理</span>-->
-<!--                </a>-->
-<!--            </li>-->
-<!--            <li>-->
-<!--                <a href="tables.html">-->
-<!--                    <i class="icon-th-large"></i>-->
-<!--                    <span>表格</span>-->
 <!--                </a>-->
 <!--            </li>-->
             
@@ -325,7 +335,7 @@
                 values: [ 40, 170 ],
             });
 
-            
+
 
             // // jQuery Flot Chart
             // var visits = [[1, 50], [2, 40], [3, 45], [4, 23],[5, 55],[6, 65],[7, 61],[8, 70],[9, 65],[10, 75],[11, 57],[12, 59]];
