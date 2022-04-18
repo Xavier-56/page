@@ -236,7 +236,8 @@
                     <i class="icon-chevron-down"></i>
                 </a>
                 <ul class="submenu">
-                <li><a href="<?php echo yii\helpers\Url::to(['paper/papers']); ?>">论文列表</a></li>
+                    <li><a href="<?php echo yii\helpers\Url::to(['paper/papers']); ?>">论文列表</a></li>
+                    <li><a href="<?php echo yii\helpers\Url::to(['paper/scores']); ?>">论文得分</a></li>
                 </ul>
             </li>
             <li>

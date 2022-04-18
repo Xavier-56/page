@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div id="pad-wrapper" class="users-list">
             <div class="row-fluid header">
-                <h3>评论列表</h3>
+                <h3>留言列表</h3>
             </div>
             <!-- Users table -->
             <div class="row-fluid table">
@@ -16,10 +16,10 @@
                             <span class="line"></span>论文名称
                         </th>
                         <th class="span3 sortable">
-                            <span class="line"></span>评论时间
+                            <span class="line"></span>留言时间
                         </th>
                         <th class="span3 sortable">
-                            <span class="line"></span>评论内容
+                            <span class="line"></span>留言内容
                         </th>
                     </tr>
                     </thead>

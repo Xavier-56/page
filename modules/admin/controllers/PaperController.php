@@ -1,5 +1,6 @@
 <?php
 namespace app\modules\admin\controllers;
+use app\models\Mark;
 use app\models\Paper;
 use app\models\Distribute;
 use app\models\Teacher;
@@ -61,4 +62,16 @@ class PaperController extends Controller{
         }
         $this->redirect(['paper/papers']);
     }
+    public function actionScores(){
+        $model = Mark::find()->joinWith(['paper','distribute']);
+        $count = $model->count();
+        $pageSize = Yii::$app->params['pageSize']['paper'];
+        $pager = new Pagination(['totalCount' => $count, 'pageSize' => $pageSize]);
+        $scores = $model->offset($pager->offset)->limit($pager->limit)->all();
+        return $this->render('scores', ['scores' => $scores, 'pager' => $pager]);
+    }
+//    public function actionDownloadMark(){
+//        $model = Mark::find()->joinWith(['paper','distribute']);
+//        Excel::
+//    }
 }

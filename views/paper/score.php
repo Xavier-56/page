@@ -10,7 +10,16 @@ use yii\bootstrap\ActiveForm;
             <div class="row-fluid header">
                 <h3>论文得分</h3>
             </div>
-
+            <div style="color: red;font-size: 30px">
+                <?php if ($model->isok == 0):?>
+                    同意答辩
+                <?php elseif ($model->isok ==1): ?>
+                    修改后答辩
+                <?php else:?>
+                    不同意答辩
+                <?php endif; ?>
+            </div>
+            <br/>
             <div class="row-fluid form-wrapper">
                 <!-- left column -->
                 <div class="span9 with-sidebar">
@@ -31,7 +40,6 @@ use yii\bootstrap\ActiveForm;
                         <?php echo $form->field($model, 'theory')->textInput(['class' => 'span9', 'disabled' => true]); ?>
                         <?php echo $form->field($model, 'research')->textInput(['class' => 'span9', 'disabled' => true]); ?>
                         <?php echo $form->field($model, 'write')->textInput(['class' => 'span9', 'disabled' => true]); ?>
-
                         <?php
                         if (Yii::$app->session->hasFlash('info')) {
                             echo Yii::$app->session->getFlash('info');

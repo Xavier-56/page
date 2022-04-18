@@ -69,7 +69,6 @@ class Student extends ActiveRecord{
             $session = Yii::$app->session;
             $session['student'] = [
                 'username' => $this->username,
-//                'studentid'=>22,
                 'isLogin' => 1,
             ];
             return (bool)$session['student']['isLogin'];

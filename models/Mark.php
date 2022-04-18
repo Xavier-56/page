@@ -11,6 +11,9 @@ class Mark extends ActiveRecord{
     public function getPaper(){
         return $this->hasOne(Paper::className(), ['paperid' => 'paperid']);
     }
+    public function getDistribute(){
+        return $this->hasOne(Paper::className(), ['paperid' => 'paperid']);
+    }
     public function attributeLabels(){
         return[
             'select'=>'选题（10%）：',
@@ -19,19 +22,22 @@ class Mark extends ActiveRecord{
             'theory'=>'理论和专业知识（15%）：',
             'research'=>'科研能力（25%）：',
             'write'=>'写作能力（10%）：',
-            'total'=>'总分:'
+            'total'=>'总分:',
+            'isok'=>'结果:'
         ];
     }
     public function rules(){
         return [
-            ['paperid','safe'],
-            ['select','safe'],
-            ['summarize','safe'],
-            ['innovation','safe'],
-            ['theory','safe'],
-            ['research','safe'],
-            ['write','safe'],
-            ['total','safe']
+            ['paperid','safe',],
+            ['select','required', 'message' => '不能为空'],
+            ['summarize','required', 'message' => '不能为空'],
+            ['innovation','required', 'message' => '不能为空'],
+            ['theory','required', 'message' => '不能为空'],
+            ['research','required', 'message' => '不能为空'],
+            ['write','required', 'message' => '不能为空'],
+            [['select','summarize','innovation','theory','research','write'], 'integer','message' => '范围0-100','min' =>1, 'max'=>100],
+            ['total','safe'],
+            ['isok','safe']
         ];
     }
     public function mark($data){

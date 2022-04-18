@@ -1,11 +1,3 @@
-<!--<link rel="stylesheet" type="text/css" href="assets/css/animate.css">-->
-<!--<link rel="stylesheet" type="text/css" href="assets/css/style.css">-->
-<!--<link rel="stylesheet" type="text/css" href="assets/css/muke/course/learn-less.css" />-->
-<!--<link rel="stylesheet" type="text/css" href="assets/css/muke/course/course-comment.css" />-->
-<!--<link rel="stylesheet" type="text/css" href="assets/css/muke/base.css">-->
-<!--<link rel="stylesheet" type="text/css" href="assets/css/muke/common-less.css">-->
-<!--<link rel="stylesheet" type="text/css" href="assets/css/muke/course/common-less.css">-->
-<!--<link rel="stylesheet" type="text/css" href="assets/css/mooc.css" />-->
 <?php
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;

@@ -18,6 +18,9 @@ class Paper extends ActiveRecord{
             'file'=>'上传文件：',
         ];
     }
+    public function getDistribute(){
+        return $this->hasOne(Paper::className(), ['studentid' => 'studentid']);
+    }
     public function rules(){
         return [
 //            ['title', 'required', 'message' => '论文题目不能为空'],
