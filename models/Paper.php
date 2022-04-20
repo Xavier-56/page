@@ -25,14 +25,12 @@ class Paper extends ActiveRecord{
         return [
 //            ['title', 'required', 'message' => '论文题目不能为空'],
             [['file'], 'file', 'skipOnEmpty' => false, 'extensions' => 'pdf'],
-            ['title','safe']
         ];
     }
     public function upload(){
         if ($this->validate()) {
-            $this->file->saveAs('uploads/' . $this->file->baseName . '.' . $this->file->extension);
+            $this->file->saveAs('uploads/' . iconv("UTF-8","gb2312",$this->file->baseName). '.' . $this->file->extension);
             $this->createtime = time();
-//            $this->studentid = Yii::$app->session['student']['studentid'];
             $this->studentid  = Student::find()->where('username = :user', [':user' => Yii::$app->session['student']['username']])->one()->studentid;
             $this->title = $this->file->baseName;
             $this->url ='uploads/' . $this->file->baseName . '.' . $this->file->extension;

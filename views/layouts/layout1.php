@@ -52,28 +52,6 @@
 <!--                <li class="hidden-phone">-->
 <!--                    <input class="search" type="text" />-->
 <!--                </li>-->
-                <li class="notification-dropdown hidden-phone">
-                    <a href="#" class="trigger">
-                        <i class="icon-envelope-alt"></i>
-                        <span class="count">6</span>
-                    </a>
-                    <div class="pop-dialog">
-                        <div class="pointer right">
-                            <div class="arrow"></div>
-                            <div class="arrow_border"></div>
-                        </div>
-                        <div class="body">
-                            <a href="#" class="close-icon"><i class="icon-remove-sign"></i></a>
-                            <div class="notifications">
-                                <h3>你有 6 个新通知</h3>
-                                <a href="#" class="item">
-                                    <i class="icon-signin"></i> 新用户注册
-                                    <span class="time"><i class="icon-time"></i> 13 分钟前.</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle hidden-phone" data-toggle="dropdown">
                         账户管理
@@ -83,11 +61,6 @@
                     <li><a href="<?php echo yii\helpers\Url::to(['detail/changedetails']) ?>">个人信息管理</a></li>
                     <li><a href="<?php echo yii\helpers\Url::to(['detail/changepass']); ?>">修改密码</a></li>
                     </ul>
-                </li>
-                <li class="settings hidden-phone">
-                    <a href="personal-info.html" role="button">
-                        <i class="icon-cog"></i>
-                    </a>
                 </li>
                 <li class="settings hidden-phone">
                 <a href="<?php echo yii\helpers\Url::to(['index/logout']) ?>" role="button">

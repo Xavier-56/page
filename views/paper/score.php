@@ -11,6 +11,7 @@ use yii\bootstrap\ActiveForm;
                 <h3>论文得分</h3>
             </div>
             <div style="color: red;font-size: 30px">
+                <h style = "color: #0e0e0e">评审结果：</h>
                 <?php if ($model->isok == 0):?>
                     同意答辩
                 <?php elseif ($model->isok ==1): ?>

@@ -7,7 +7,7 @@
             <div class="row-fluid header">
                 <h3>成绩</h3>
                 <div class="span10 pull-right">
-                    <a href="<?php echo yii\helpers\Url::to(['paper/downloadMark']) ?>" class="btn-flat success pull-right">
+                    <a href="<?php echo yii\helpers\Url::to(['paper/export']) ?>" class="btn-flat success pull-right">
                         下载成绩
                     </a>
                 </div>
