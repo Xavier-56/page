@@ -11,15 +11,6 @@ class Comment extends ActiveRecord{
     public function getPaper(){
         return $this->hasOne(Paper::className(), ['paperid' => 'paperid']);
     }
-//    public function getDistribute(){
-//        return $this->hasOne(Paper::className(), ['paperid' => 'paperid']);
-//    }
-//    public function getStudent(){
-//        return $this->hasOne(Paper::className(), ['studentid' => 'studentid']);
-//    }
-//    public function getTeacher(){
-//        return $this->hasOne(Paper::className(), ['teacherid' => 'teacherid']);
-//    }
     public function attributeLabels(){
         return[
             'content'=>'留言：',
@@ -27,7 +18,7 @@ class Comment extends ActiveRecord{
     }
     public function rules(){
         return [
-            ['content', 'required', 'on' => ['comment']],
+            ['content', 'required','message'=>'留言不能为空', 'on' => ['comment']],
         ];
     }
     public function comment($data){

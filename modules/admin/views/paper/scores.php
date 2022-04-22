@@ -21,12 +21,12 @@
                         <th class="span3 sortable">
                             <span class="line"></span>论文题目
                         </th>
-<!--                        <th class="span3 sortable">-->
-<!--                            <span class="line"></span>学生姓名-->
-<!--                        </th>-->
-<!--                        <th class="span2 sortable">-->
-<!--                            <span class="line"></span>教师姓名-->
-<!--                        </th>-->
+                        <th class="span3 sortable">
+                            <span class="line"></span>学生
+                        </th>
+                        <th class="span2 sortable">
+                            <span class="line"></span>评审教师
+                        </th>
                         <th class="span3 sortable">
                             <span class="line"></span>得分
                         </th>
@@ -42,12 +42,12 @@
                             <td>
                                 <?php echo isset($score->paper->title) ? $score->paper->title : '未填写'; ?>
                             </td>
-<!--                            <td>-->
-<!--                                --><?php //echo isset($score->paper->distribute->teacherid) ? $score->paper->distribute->teacherid : '未填写'; ?>
-<!--                            </td>-->
-<!--                            <td>-->
-<!--                                --><?php //echo isset($teacher->school) ? $teacher->school : '未填写'; ?>
-<!--                            </td>-->
+                            <td>
+                                <?php echo isset($score->student->truename) ? $score->student->truename : '未填写'; ?>
+                            </td>
+                            <td>
+                                <?php echo isset($score->teacher->truename) ? $score->teacher->truename : '未填写'; ?>
+                            </td>
                             <td>
                                 <?php echo isset($score->total) ? $score->total : '未填写'; ?>
                             </td>

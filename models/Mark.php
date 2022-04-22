@@ -11,8 +11,11 @@ class Mark extends ActiveRecord{
     public function getPaper(){
         return $this->hasOne(Paper::className(), ['paperid' => 'paperid']);
     }
-    public function getDistribute(){
-        return $this->hasOne(Paper::className(), ['paperid' => 'paperid']);
+    public function getTeacher(){
+        return $this->hasOne(Teacher::className(), ['teacherid' => 'teacherid']);
+    }
+    public function getStudent(){
+        return $this->hasOne(Student::className(), ['studentid' => 'studentid']);
     }
     public function attributeLabels(){
         return[
@@ -45,6 +48,8 @@ class Mark extends ActiveRecord{
             $paperid = (int)Yii::$app->request->get('paperid');
             $this->paperid = $paperid;
             $this->createtime = time();
+            $this->teacherid = Teacher::find()->where('username = :user', [':user' => Yii::$app->session['teacher']['username']])->one()->teacherid;
+            $this->studentid = Paper::find()->where(['paperid'=>$this->paperid])->one()->studentid;
             if ($this->save(false)){
                 return true;
             }

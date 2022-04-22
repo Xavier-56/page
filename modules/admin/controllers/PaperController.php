@@ -65,7 +65,7 @@ class PaperController extends Controller{
         $this->redirect(['paper/papers']);
     }
     public function actionScores(){
-        $model = Mark::find()->joinWith(['paper','distribute']);
+        $model = Mark::find()->joinWith(['paper']);
         $count = $model->count();
         $pageSize = Yii::$app->params['pageSize']['paper'];
         $pager = new Pagination(['totalCount' => $count, 'pageSize' => $pageSize]);
@@ -75,25 +75,29 @@ class PaperController extends Controller{
     public  function actionExport(){
         $objExcel = new PHPExcel();
         $objWriter = PHPExcel_IOFactory::createWriter($objExcel, 'Excel5');
-        $objActSheet = $objExcel->getActiveSheet(0);
+        $objActSheet = $objExcel->getActiveSheet();
         $models = Mark::find()->joinWith('paper')->all();
         $objActSheet->setTitle('评审结果汇总');
         $objActSheet->setCellValue('A1','编号');
         $objActSheet->setCellValue('B1','论文名称');
-        $objActSheet->setCellValue('C1','论文得分');
-        $objActSheet->setCellValue('D1','评审结果');
-        $baseRow = 1;
+        $objActSheet->setCellValue('C1','学生');
+        $objActSheet->setCellValue('D1','评审教师');
+        $objActSheet->setCellValue('E1','论文得分');
+        $objActSheet->setCellValue('F1','评审结果');
+        $i = 1;
         foreach ( $models as $model ) {
-            $i = $baseRow + 1;
+            $i = $i + 1;
             $objExcel->getActiveSheet()->setCellValue('A'.$i,$i-1);
             $objExcel->getActiveSheet()->setCellValue('B'.$i,$model->paper->title);
-            $objExcel->getActiveSheet()->setCellValue('C'.$i,$model->total);
+            $objExcel->getActiveSheet()->setCellValue('C'.$i,$model->student->truename);
+            $objExcel->getActiveSheet()->setCellValue('D'.$i,$model->teacher->truename);
+            $objExcel->getActiveSheet()->setCellValue('E'.$i,$model->total);
             if ($model->isok == 0):
-                $objExcel->getActiveSheet()->setCellValue('D'.$i,'同意答辩');
+                $objExcel->getActiveSheet()->setCellValue('F'.$i,'同意答辩');
             elseif ($model->isok == 1):
-                $objExcel->getActiveSheet()->setCellValue('D'.$i,'修改后答辩');
+                $objExcel->getActiveSheet()->setCellValue('F'.$i,'修改后答辩');
             else:
-                $objExcel->getActiveSheet()->setCellValue('D'.$i,'不同意答辩');
+                $objExcel->getActiveSheet()->setCellValue('F'.$i,'不同意答辩');
             endif;
         }
         $objExcel->setActiveSheetIndex(0);

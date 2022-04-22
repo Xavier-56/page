@@ -47,6 +47,8 @@ class PaperController extends Controller{
         $model = new Comment;
         $post = Yii::$app->request->post();
         $model->comment($post);
+        $model->author = Teacher::find()->where('username = :user', [':user' => Yii::$app->session['teacher']['username']])->one()->truename;
+        $model->save();
         $paperid = (int)Yii::$app->request->get('paperid');
         $comments = Comment::find()->where('paperid = :id', [':id' => $paperid])->all();
         return $this->render('comment', ['model' => $model,'comments'=>$comments]);

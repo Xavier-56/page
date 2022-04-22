@@ -15,6 +15,9 @@
                         <th class="span2 sortable">
                             <span class="line"></span>论文名称
                         </th>
+                        <th class="span2 sortable">
+                            <span class="line"></span>留言人
+                        </th>
                         <th class="span3 sortable">
                             <span class="line"></span>留言时间
                         </th>
@@ -29,6 +32,9 @@
                         <tr class="first">
                             <td>
                                 <?php echo isset($comment->paper->title) ? $comment->paper->title : '未填写'; ?>
+                            </td>
+                            <td>
+                                <?php echo isset($comment->author) ? $comment->author : '未填写'; ?>
                             </td>
                             <td>
                                 <?php echo date("Y-m-d H:i:s", $comment->createtime); ?>

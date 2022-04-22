@@ -7,8 +7,6 @@
 	
     <!-- bootstrap -->
     <link rel="stylesheet" type="text/css" href="assets/css11/muke/course/course-comment.css" />
-    <!--    <link rel="stylesheet" type="text/css" href="assets/css11/muke/base.css">-->
-    <!--    <link rel="stylesheet" type="text/css" href="assets/css11/mooc.css" />-->
     <link href="assets/css/bootstrap/bootstrap.css" rel="stylesheet" />
     <link href="assets/css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
     <link href="assets/css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet" />

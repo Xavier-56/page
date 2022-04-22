@@ -33,7 +33,7 @@ use yii\helpers\Html;
                         <?php echo $form->field($model, 'write')->textInput(['class' => 'span9','id'=>'f','onchange'=>'total()']); ?>
                         <?php echo $form->field($model, 'total')->textInput(['class' => 'span9','id'=>'g']); ?>
                         <?php echo $form->field($model, 'isok')->radioList([0=>'同意答辩',1=>'修改后答辩',2=>'不同意答辩'], ['class' => 'span1']);?>
-                        <?php
+                            <?php
                         if (Yii::$app->session->hasFlash('info')) {
                             echo Yii::$app->session->getFlash('info');
                         }

@@ -4,6 +4,7 @@ use app\models\Comment;
 use app\models\Mark;
 use app\models\Paper;
 use app\models\Student;
+use app\models\Teacher;
 use yii\data\Pagination;
 use yii\web\Controller;
 use Yii;
@@ -124,6 +125,8 @@ class PaperController extends Controller{
         $model = new Comment;
         $post = Yii::$app->request->post();
         $model->comment($post);
+        $model->author = Student::find()->where('username = :user', [':user' => Yii::$app->session['student']['username']])->one()->truename;
+        $model->save();
         $paperid = (int)Yii::$app->request->get('paperid');
         $comments = Comment::find()->where('paperid = :id', [':id' => $paperid])->all();
         return $this->render('comment', ['model' => $model,'comments'=>$comments]);

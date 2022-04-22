@@ -54,20 +54,18 @@ use yii\helpers\Html;
                     <div id="statsChart"></div>
                 </div>
             </div>
-            <!-- morris bar & donut charts -->
-<!--            <div class="row-fluid section">-->
-<!--                <h4 class="title">-->
-<!--                    Morris.js-->
-<!--                </h4>-->
-<!--                <div class="span6 chart">-->
-<!--                    <h5>Devices sold</h5>-->
-<!--                    <div id="hero-bar" style="height: 250px;"></div>-->
-<!--                </div>-->
-<!--                <div class="span5 chart">-->
-<!--                    <h5>Month traffic</h5>-->
-<!--                    <div id="hero-donut" style="height: 250px;"></div>-->
-<!--                </div>-->
-<!--            </div>-->
+            <div class="row-fluid section">
+                <h4 class="title">
+                    论文评审结果
+                </h4>
+                <div class="span5 chart">
+                    <div id="hero-donut" style="height: 250px;"></div>
+                </div>
+                <div class="span6 chart">
+                    <div id="hero-bar" style="height: 250px;"></div>
+                </div>
+
+            </div>
             <!-- end statistics chart -->
     </div>
 </div>
@@ -201,21 +199,15 @@ use yii\helpers\Html;
 </script>
     <!-- build the charts -->
     <script type="text/javascript">
-
-        // Morris Bar Chart
         Morris.Bar({
             element: 'hero-bar',
             data: [
-                {device: '1', sells: 136},
-                {device: '3G', sells: 1037},
-                {device: '3GS', sells: 275},
-                {device: '4', sells: 380},
-                {device: '4S', sells: 655},
-                {device: '5', sells: 1571}
+                {device: '同意答辩', sells: <?= Html::encode($mark0); ?>},
+                {device: '修改后答辩', sells: <?= Html::encode($mark1); ?>},
+                {device: '重新答辩', sells: <?= Html::encode($mark2); ?>},
             ],
             xkey: 'device',
             ykeys: ['sells'],
-            labels: ['Sells'],
             barRatio: 0.4,
             xLabelMargin: 10,
             hideHover: 'auto',
@@ -227,12 +219,11 @@ use yii\helpers\Html;
         Morris.Donut({
             element: 'hero-donut',
             data: [
-                {label: 'Direct', value: 25 },
-                {label: 'Referrals', value: 40 },
-                {label: 'Search engines', value: 25 },
-                {label: 'Unique visitors', value: 10 }
+                {label: '同意答辩', value: <?= Html::encode($mark0); ?> },
+                {label: '修改后答辩', value: <?= Html::encode($mark0); ?> },
+                {label: '不同意答辩', value: <?= Html::encode($mark0); ?> },
             ],
-            colors: ["#30a1ec", "#76bdee", "#c4dafe"],
+            colors: ["green", "yellow", "red"],
             formatter: function (y) { return y + "%" }
         });
 

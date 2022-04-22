@@ -19,7 +19,7 @@ class Paper extends ActiveRecord{
         ];
     }
     public function getDistribute(){
-        return $this->hasOne(Paper::className(), ['studentid' => 'studentid']);
+        return $this->hasOne(Paper::className(), ['paperid' => 'paperid']);
     }
     public function rules(){
         return [
