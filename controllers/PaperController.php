@@ -15,8 +15,9 @@ class PaperController extends Controller{
     public function actionIndex(){
         $model = new Paper;
         if (Yii::$app->request->isPost) {
+            $post = Yii::$app->request->post();
             $model->file = UploadedFile::getInstance($model, 'file');
-            if ($model->upload()) {
+            if ($model->upload()&&$model->upload1($post)) {
                 Yii::$app->session->setFlash('info', '上传成功');
                 $this->redirect(['paper/alreadysubmit']);
             }
@@ -70,6 +71,12 @@ class PaperController extends Controller{
         $model = Mark::find()->where('paperid = :id', [':id' => $paperid])->one();
         return $this->render('score',['model'=>$model,'model1'=>$model1]);
     }
+    public function actionScorebypaper(){
+        $paperid = (int)Yii::$app->request->get('paperid');
+        $model1 = Paper::find()->where('paperid = :id', [':id' => $paperid])->one();
+        $model = Mark::find()->where('paperid = :id', [':id' => $paperid])->one();
+        return $this->render('scorebypaper',['model'=>$model,'model1'=>$model1]);
+    }
     public function actionDownload(){
         $phpword = new PhpWord;
         $template = $phpword->loadTemplate('template/score.docx');
@@ -90,12 +97,21 @@ class PaperController extends Controller{
         $template->setValue('${time}', $time);
         $time1 = time();
         $filename = 'download/'.$time1.'.docx';
-//        $filename=iconv("utf-8","gb2312",$filename);
         $template->saveAs($filename);
         $srcfilename =Yii::getAlias('@webroot') . '/download/'.$time1.'.docx';
         $destfilename =Yii::getAlias('@webroot') . '/download/'.$time1.'.pdf';
         $this->doc_to_pdf($srcfilename,$destfilename);
-//        $file = Yii::getAlias('@webroot') . '/download/'.$destfilename;
+        $file = $destfilename;
+        if (file_exists($file)) {
+            Yii::$app->response->sendFile($file);
+        }
+    }
+    public function actionDownloadbypaper(){
+        $paperid = (int)Yii::$app->request->get('paperid');
+        $filename = Mark::find()->where('paperid = :id', [':id' => $paperid])->one()->url;
+        $srcfilename =Yii::getAlias('@webroot') . '/'.$filename;
+        $destfilename =Yii::getAlias('@webroot') . '/download/'.time().'.pdf';
+        $this->doc_to_pdf($srcfilename,$destfilename);
         $file = $destfilename;
         if (file_exists($file)) {
             Yii::$app->response->sendFile($file);

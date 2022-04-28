@@ -6,14 +6,17 @@
         <div id="pad-wrapper" class="users-list">
             <div class="row-fluid header">
                 <h3>论文列表</h3>
-<!--                <div class="span10 pull-right">-->
-<!--                    <a href="--><?php //echo yii\helpers\Url::to(['teacher/register']) ?><!--" class="btn-flat success pull-right">-->
-<!--                        <span>&#43;</span>-->
-<!--                        添加新教师-->
-<!--                    </a>-->
-<!--                </div>-->
+                <div class="span10 pull-right">
+                    <?php if ($mode== 0):?>
+                        <h5 style="margin-left: 600px">模式：在线评分</h5>
+                    <?php else:?>
+                        <h5 style="margin-left: 580px">模式：上传文档评分</h5>
+                    <?php endif; ?>
+                    <a href="<?php echo yii\helpers\Url::to(['paper/change']) ?>" class="btn-flat success pull-right">
+                        更换模式
+                    </a>
+                </div>
             </div>
-
             <!-- Users table -->
             <div class="row-fluid table">
                 <table class="table table-hover">
@@ -36,6 +39,9 @@
                         </th>
                         <th class="span3 sortable">
                             <span class="line"></span>状态
+                        </th>
+                        <th class="span3 sortable">
+                            <span class="line"></span>评审教师
                         </th>
                         <th class="span3 sortable align-right">
                             <span class="line"></span>操作
@@ -63,6 +69,13 @@
                                     <span class="label label-success">已分配</span>
                                 <?php else:?>
                                     <span class="label label-important">未分配</span>
+                                <?php endif; ?>
+                            </td>
+                            <td>
+                                <?php if ($paper->status == 1 or $paper->status == 2):?>
+                                    <?php echo isset($paper->distribute->teachername) ? $paper->distribute->teachername : '未填写'; ?>
+                                <?php else:?>
+                                    暂无
                                 <?php endif; ?>
                             </td>
                             <td class="align-right">

@@ -49,7 +49,11 @@
                                     <a href="<?php echo yii\helpers\Url::to(['paper/comment', 'paperid' => $distribute->paper->paperid]); ?>">留言</a>
                                 <?php else:?>
                                     <a href="<?php echo yii\helpers\Url::to(['paper/download', 'paperid' => $distribute->paper->paperid]); ?>">下载</a>
-                                    <a href="<?php echo yii\helpers\Url::to(['paper/mark', 'paperid' => $distribute->paper->paperid]); ?>">评分</a>
+                                    <?php if($distribute->mode == 0):?>
+                                        <a href="<?php echo yii\helpers\Url::to(['paper/mark', 'paperid' => $distribute->paper->paperid]); ?>">评分</a>
+                                    <?php else:?>
+                                        <a href="<?php echo yii\helpers\Url::to(['paper/markbypaper', 'paperid' => $distribute->paper->paperid]); ?>">评分</a>
+                                    <?php endif;?>
                                 <?php endif; ?>
                             </td>
                         </tr>

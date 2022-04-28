@@ -66,7 +66,11 @@
                             </td>
                             <td class="align-right">
                                 <?php if ($paper->status == 1):?>
-                                    <a href="<?php echo yii\helpers\Url::to(['paper/score', 'paperid' => $paper->paperid]); ?>">查看得分</a>
+                                     <?php if ($paper->distribute->mode == 0):?>
+                                        <a href="<?php echo yii\helpers\Url::to(['paper/score', 'paperid' => $paper->paperid]); ?>">查看得分</a>
+                                     <?php else:?>
+                                        <a href="<?php echo yii\helpers\Url::to(['paper/scorebypaper', 'paperid' => $paper->paperid]); ?>">查看得分</a>
+                                    <?php endif; ?>
                                     <a href="<?php echo yii\helpers\Url::to(['paper/comment', 'paperid' => $paper->paperid]); ?>">留言</a>
                                 <?php elseif ($paper->status ==2): ?>
                                     等待评审

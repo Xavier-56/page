@@ -1,5 +1,6 @@
 <?php
 namespace app\modules\admin\controllers;
+use app\models\Admin;
 use app\models\Mark;
 use app\models\Paper;
 use app\models\Distribute;
@@ -13,12 +14,13 @@ require_once('E:\wamp\www\page\vendor\PHPExcel\PHPExcel.php');
 class PaperController extends Controller{
     public $layout = 'layout1';
     public function actionPapers(){
-        $model = Paper::find()->joinWith('student');
+        $model = Paper::find()->joinWith('distribute');
         $count = $model->count();
         $pageSize = Yii::$app->params['pageSize']['paper'];
         $pager = new Pagination(['totalCount' => $count, 'pageSize' => $pageSize]);
         $papers = $model->offset($pager->offset)->limit($pager->limit)->all();
-        return $this->render('papers',['papers' => $papers, 'pager' => $pager]);
+        $mode = Admin::find()->one()->mode;
+        return $this->render('papers',['papers' => $papers, 'mode'=>$mode,'pager' => $pager]);
     }
     public function actionDownload(){
         $paperid = (int)Yii::$app->request->get('paperid');
@@ -38,6 +40,8 @@ class PaperController extends Controller{
         }
         $rand_keys = array_rand($ids,1);
         $model->teacherid = $ids[$rand_keys];
+        $model->teachername = Teacher::find()->where('teacherid = :id', [':id' =>$ids[$rand_keys]])->one()->truename;
+        $model->mode = Admin::find()->one()->mode;
         $model->save();
         Paper::updateAll(['status' => 2], 'paperid = :id', [':id' => $paperid]);
         $this->redirect(['paper/papers']);
@@ -107,5 +111,14 @@ class PaperController extends Controller{
         header("Content-Disposition: attachment;filename=评审结果汇总$time.xls");
         header('Cache-Control: max-age=0');
         $objWriter->save('php://output');
+    }
+    public function actionChange(){
+        $mode = Admin::find()->one()->mode;
+        if ($mode==0){
+            Admin::updateAll(['mode' => 1]);
+        }else{
+            Admin::updateAll(['mode' => 0]);
+        }
+        $this->redirect(['paper/papers']);
     }
 }

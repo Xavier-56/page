@@ -52,7 +52,8 @@ use yii\helpers\Html;
 
                     <div class="alert alert-info hidden-tablet">
                         <i class="icon-lightbulb pull-left"></i>
-                        每项得分100分
+                        每项得分总分按括号内提示，
+                        总分自动计算
                     </div>
                 </div>
             </div>
@@ -70,6 +71,6 @@ use yii\helpers\Html;
         const e = document.getElementById('e').value;
         const f = document.getElementById('f').value;
         const g = document.getElementById('g');
-        g.value = a*0.1+b*0.05+c*0.35+d*0.15+e*0.25+f*0.1;
+        g.value = a+b+c+d+e+f;
     }
 </script>

@@ -281,12 +281,12 @@
 <!--                </a>-->
 <!--            </li>-->
             
-<!--            <li>-->
-<!--                <a href="--><?php //echo yii\helpers\Url::to(['detail/changedetails']) ?><!--">-->
-<!--                    <i class="icon-cog"></i>-->
-<!--                    <span>我的信息</span>-->
-<!--                </a>-->
-<!--            </li>-->
+            <li>
+                <a href="<?php echo yii\helpers\Url::to(['template/template']) ?>">
+                    <i class="icon-cog"></i>
+                    <span>评分模板</span>
+                </a>
+            </li>
             
         </ul>
     </div>

@@ -29,7 +29,7 @@ use yii\helpers\Html;
                 </ul>
             </div>
             <!--发布评论-->
-            <div id="js-pub-container" class="issques clearfix js-form">
+            <div id="js-pub-container" class="issques clearfix js-form" style="margin-left: 40px;>
                 <div class="wgt-ipt-wrap pub-editor-wrap " id="js-pl-input-fake">
                     <?php $form = ActiveForm::begin();
                     echo $form->field($model,'content')->textarea(['id' => 'js-pl-textarea','placeholder'=>'发表留言吧']);

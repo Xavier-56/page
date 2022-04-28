@@ -12,6 +12,9 @@ class Distribute extends ActiveRecord{
         return $this->hasOne(Paper::className(), ['paperid' => 'paperid']);
     }
     public function getTeacher(){
-        return $this->hasOne(Paper::className(), ['paperid' => 'paperid']);
+        return $this->hasOne(Teacher::className(), ['teacherid' => 'teacherid']);
+    }
+    public function getMark(){
+        return $this->hasOne(Mark::className(), ['paperid' => 'paperid']);
     }
 }
